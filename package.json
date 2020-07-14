@@ -1,0 +1,24 @@
+{
+  "name": "batantv-api",
+  "version": "1.0.0",
+  "description": "Node.js API for Batan.TV Site.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "mongodb",
+    "rest",
+    "api"
+  ],
+  "author": "hercase",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.24"
+  }
+}
