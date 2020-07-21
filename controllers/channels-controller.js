@@ -1,5 +1,6 @@
 const db = require("../models");
 const Channel = db.channels;
+const Preview = db.previews;
 
 // Create and Save a new Channel
 exports.create = (req, res) => {
@@ -13,6 +14,13 @@ exports.create = (req, res) => {
   const channel = new Channel({
     title: req.body.title,
     description: req.body.description,
+    title: req.body.title,
+    short_title: req.body.short_title,
+    uri: req.body.uri,
+    media: {
+      url: req.body.media.url,
+      channelId: req.body.media.channelId,
+    }
   });
 
   // Save channel in the database
@@ -50,7 +58,24 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Channel.findById(id)
+  Channel.find({ channel_id: id })
+    .then(data => {
+      if (!data)
+        res.status(404).send({ message: "Not found Channel with id " + id });
+      else res.send(data);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .send({ message: "Error retrieving Channel with id=" + id });
+    });
+};
+
+// Find a single Channel Preview with an id
+exports.findPreviews = (req, res) => {
+  const id = req.params.id;
+
+  Preview.find({ channelId : id })
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Not found Channel with id " + id });

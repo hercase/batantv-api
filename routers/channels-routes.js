@@ -12,6 +12,9 @@ module.exports = app => {
   // Retrieve a single Channel with id
   router.get("/:id", channel.findOne);
 
+  // Retrieve a single Channel Preview items
+  router.get("/preview/:id", channel.findPreviews);
+
   // Update a Channel with id
   router.put("/:id", channel.update);
 
