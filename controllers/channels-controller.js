@@ -76,6 +76,7 @@ exports.findPreviews = (req, res) => {
   const id = req.params.id;
 
   Preview.find({ channelId : id })
+    .sort({ publishedAt : -1})
     .then(data => {
       if (!data)
         res.status(404).send({ message: "Not found Channel with id " + id });

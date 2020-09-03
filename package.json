@@ -4,7 +4,8 @@
   "description": "Node.js API for Batan.TV Site.",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon ./server.js"
+    "dev": "nodemon ./server.js",
+    "prod": "set NODE_ENV=production&& nodemon ./server.js"
   },
   "keywords": [
     "nodejs",
