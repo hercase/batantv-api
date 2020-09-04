@@ -37,16 +37,23 @@ require("./routers/channels-routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
-
-if (process.env.NODE_ENV === 'production'){
+if (process.env.NODE_ENV == 'production'){
   const options = {
     key: fs.readFileSync("/etc/letsencrypt/live/batan.tv/privkey.pem"),
     cert: fs.readFileSync("/etc/letsencrypt/live/batan.tv/fullchain.pem")
   };
 
-  https.createServer(options, app).listen(PORT);
-}
+const sv = https.createServer(options, app);
+
+sv.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT} in Production Mode.`);
+});
+
+} else {
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT} in Development Mode.`);
+});
+
+} 
 
