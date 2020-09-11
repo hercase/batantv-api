@@ -17,8 +17,10 @@
   "author": "hercase",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.20.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "crontab": "^1.4.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.24",
     "nodemon": "^2.0.4"

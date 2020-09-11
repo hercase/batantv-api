@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const https = require("https");
 const fs = require("fs");
+const preview = require("./controllers/previews-controller");
 
 const corsOptions = {
   origin: "*",
@@ -31,8 +32,12 @@ db.mongoose
   process.exit();
 });
 
-require("./routers/channels-routes")(app);
+// Test
+app.get("/", (req, res) => {
+  preview.updatePreview('UCPJt1Ugnfq-ZcoXsbWziafw', res)
+});
 
+require("./routers/channels-routes")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 4000;
